@@ -1,7 +1,19 @@
-// 메인 화면 중앙 피드 파일
+import styled from "styled-components";
+import FeedHeader from "./FeedHeader";
 
+const FeedContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  border: solid 1px #9a9a9a;
+  padding: 10px;
+`;
 function MainFeed() {
-  return <h3>메인 피드</h3>;
+  return (
+    <FeedContainer>
+      <FeedHeader />
+    </FeedContainer>
+  );
 }
 
 export default MainFeed;
