@@ -3,19 +3,24 @@ import MainFeed from "../components/MainFeed";
 import NavBar from "../components/NavBar";
 import Widgets from "../components/Widgets";
 import styled from "styled-components";
+import React, { useState } from "react";
+import ProfileFeed from "../components/ProfileFeed";
 
 const MainContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 20px;
-  height: max-content;
+  height: 100vh;
+  box-sizing: border-box;
 `;
 
 function MainPage() {
+  const [isMain, setIsMain] = useState(true);
   return (
     <MainContainer>
-      <NavBar />
-      <MainFeed />
+      <NavBar onChangeFeed={setIsMain} />
+      {isMain ? <MainFeed /> : <ProfileFeed />}
+
       <Widgets />
     </MainContainer>
   );

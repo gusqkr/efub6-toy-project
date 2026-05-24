@@ -6,8 +6,9 @@ const HeaderContainer = styled.div`
   position: relative;
   justify-content: center;
   padding: 5px;
-  padding-bottom: 18px;
+  padding-bottom: 10px;
   border-bottom: solid 1px #9a9a9a;
+  align-items: center;
 `;
 
 const HeaderLeftText = styled.p`
@@ -15,12 +16,13 @@ const HeaderLeftText = styled.p`
   flex: 5;
   font-weight: 600;
   font-size: 15px;
+  text-align: center;
   position: relative;
 
   &::after {
     content: "";
     position: absolute;
-    bottom: -18px;
+    bottom: -11px;
     left: 50%;
     transform: translateX(-50%);
     width: 70px;
