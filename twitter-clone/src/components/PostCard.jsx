@@ -5,8 +5,9 @@ import { FaRetweet } from "react-icons/fa6";
 import { FaRegHeart, FaRegBookmark } from "react-icons/fa";
 import { RiBarChartGroupedFill, RiShare2Line } from "react-icons/ri";
 
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import EditProfileModal from "./DeleteModal";
 
 const CardContainer = styled.div`
   display: flex;
@@ -53,6 +54,10 @@ const TweetId = styled.p`
 
 const ShowMoreIcon = styled(AiOutlineEllipsis)`
   color: #9a9a9a;
+  padding: 5px;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
 `;
 
 const PostMid = styled.div`
@@ -84,6 +89,8 @@ const Icons = styled.div`
 `;
 
 const PostCard = ({ post, onCardClick }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const navigate = useNavigate();
   if (!post) return null;
 
@@ -99,7 +106,12 @@ const PostCard = ({ post, onCardClick }) => {
             <Name>{post.writerName}</Name>
             <TweetId>{post.tweetId}</TweetId>
           </PostLeftText>
-          <ShowMoreIcon />
+          <ShowMoreIcon
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsModalOpen(true);
+            }}
+          />
         </PostTop>
         <PostMid>{post.content}</PostMid>
         <PostBottom>
@@ -113,6 +125,10 @@ const PostCard = ({ post, onCardClick }) => {
           </Icons>
         </PostBottom>
       </PostSection>
+      <EditProfileModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </CardContainer>
   );
 };
