@@ -8,6 +8,7 @@ const MainContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 20px;
+  height: max-content;
 `;
 
 function MainPage() {
